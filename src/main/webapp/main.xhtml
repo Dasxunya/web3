@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pf="http://primefaces.org/ui"
+>
+
+<h:head>
+    <title>web_3</title>
+    <h:outputStylesheet library="css" name="/body.css"/>
+    <h:outputStylesheet library="css" name="/clock.css"/>
+    <h:outputStylesheet library="css" name="/header.css"/>
+    <h:outputScript library="js" name="/index.js"/>
+    <h:outputScript library="js" name="/clock.js"/>
+</h:head>
+
+<h:body>
+    <table id="body-table">
+
+        <tr>
+            <th class="header">
+                <div>
+                    <p>Шаповалова Дарья Сергеевна P3230</p>
+                    <p>Вариант 30017</p>
+                </div>
+            </th>
+        </tr>
+
+        <tr class="body">
+            <th class="choose-area">
+                <div class="graph">
+                    <ui:include src="resources/templates/graph.html"/>
+                </div>
+
+                <h:form id="hidden-form" style="display: none">
+                    <h:inputText id="pointX" value="#{point.xCoordinate}"/>
+                    <h:inputText id="pointY" value="#{point.yCoordinate}"/>
+                    <h:inputText id="pointR" value="#{point.rValue}"/>
+                    <h:commandButton id="hidden-btn" action="#{point.checkPoint}"/>
+                </h:form>
+
+                <div>
+                    <h:form id="coordinates-form">
+                        <div class="checkbox-area">
+                            <p>Выберите X:</p>
+                            <div>
+                                <pf:selectOneMenu id="x" value="#{point.xCoordinate}" required="true">
+                                    <f:selectItem itemLabel="-2" itemValue="-2.0"/>
+                                    <f:selectItem itemLabel="-1.5" itemValue="-1.5"/>
+                                    <f:selectItem itemLabel="-1" itemValue="-1.0"/>
+                                    <f:selectItem itemLabel="-0.5" itemValue="-0.5"/>
+                                    <f:selectItem itemLabel="0" itemValue="0"/>
+                                    <f:selectItem itemLabel="0.5" itemValue="0.5"/>
+                                    <f:selectItem itemLabel="1" itemValue="1.0"/>
+                                    <f:selectItem itemLabel="1.5" itemValue="1.5"/>
+                                    <f:selectItem itemLabel="2" itemValue="2.0"/>
+                                </pf:selectOneMenu>
+                            </div>
+
+                            <p>Выберите Y (-5;5):</p>
+                            <div>
+                                <pf:inputText placeholder="(-5;5)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
+                            </div>
+
+                            <p>Выберите R:</p>
+                            <div>
+                                <h:outputText id="output"/>
+                                <h:inputHidden id="rVal" value="#{point.rValue}"/>
+                                <pf:slider for="rVal" step="0.25" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="R= {value}"/>
+                            </div>
+
+                            <div class="buttons-area">
+                                <h:commandButton id="function-btn" class="gradient-button" value="Отправить" onclick="validate()" action="#{point.checkPoint}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <div>
+                    <h:button value="На главную" outcome="index" styleClass="gradient-button"/>
+                </div>
+                <div class="table-area">
+                    <h:dataTable id="main-table" value="#{point.points}" var="dot">
+                        <f:facet name="header" id="caption">История выполнений</f:facet>
+                        <h:column class="column">
+                            <f:facet name="header">X</f:facet>
+                            #{dot.x}
+                        </h:column>
+                        <h:column class="column">
+                            <f:facet name="header">Y</f:facet>
+                            #{dot.y}
+                        </h:column>
+                        <h:column class="column">
+                            <f:facet name="header">R</f:facet>
+                            #{dot.r}
+                        </h:column>
+                        <h:column class="column">
+                            <f:facet name="header">Текущее время</f:facet>
+                            #{dot.time}
+                        </h:column>
+                        <h:column class="column">
+                            <f:facet name="header">Результат</f:facet>
+                            #{dot.result}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </th>
+        </tr>
+
+    </table>
+</h:body>
+
+</html>

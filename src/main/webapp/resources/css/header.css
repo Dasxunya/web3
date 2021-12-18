@@ -1,0 +1,9 @@
+.header {
+    text-align: center;
+    background-color: #faebd7;
+    color: #93673d;
+    size: 4pt;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
