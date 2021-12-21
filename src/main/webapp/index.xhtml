@@ -8,11 +8,23 @@
 
 <h:head>
     <title>Hello</title>
+    <style type="text/css">
+        body {
+            background: url(resources/img/fl.jpg);
+            width: 100%;
+            height: 100%;
+            color: #FFFAF0;
+            background-size: 100%;
+            margin: 0;
+        }
+
+        .ui-analog-clock {
+            width: 200px;
+        }
+    </style>
+
     <h:outputStylesheet library="css" name="/body.css"/>
-    <h:outputStylesheet library="css" name="/clock.css"/>
     <h:outputStylesheet library="css" name="/header.css"/>
-    <h:outputScript library="js" name="/index.js"/>
-    <h:outputScript library="js" name="/clock.js"/>
 </h:head>
 
 <h:body>
@@ -34,29 +46,6 @@
 
         <tr>
             <td>
-                <div class="clock">
-                    <div class="hourHand"></div>
-                    <div class="minuteHand"></div>
-                    <div class="secondHand"></div>
-                    <div class="center"></div>
-                    <div class="time"></div>
-                    <ul>
-                        <li><span>1</span></li>
-                        <li><span>2</span></li>
-                        <li><span>3</span></li>
-                        <li><span>4</span></li>
-                        <li><span>5</span></li>
-                        <li><span>6</span></li>
-                        <li><span>7</span></li>
-                        <li><span>8</span></li>
-                        <li><span>9</span></li>
-                        <li><span>10</span></li>
-                        <li><span>11</span></li>
-                        <li><span>12</span></li>
-                    </ul>
-                </div>
-
-                <audio src="https://sampleswap.org/samples-ghost/DRUMS%20and%20SINGLE%20HITS/snares/5[kb]sidestick.aif.mp3" class="audio"></audio>
 
                 <br/>
             <div align="center">

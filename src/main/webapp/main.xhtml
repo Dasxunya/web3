@@ -10,43 +10,50 @@
 
 <h:head>
     <title>web_3</title>
+    <style type="text/css">
+        .math{
+            background-image:url(resources/img/math.png);
+            background-size: 400px 400px;
+        }
+
+        body {
+            background: url(resources/img/fl.jpg);
+            width: 100%;
+            height: 100%;
+            color: #FFFAF0;
+            background-size: 100%;
+            margin: 0;
+        }
+
+        .geometry{
+            background-image:url(resources/img/line.png);
+            background-size: 10px 10px;
+        }
+    </style>
+
     <h:outputStylesheet library="css" name="/body.css"/>
-    <h:outputStylesheet library="css" name="/clock.css"/>
     <h:outputStylesheet library="css" name="/header.css"/>
-    <h:outputScript library="js" name="/index.js"/>
-    <h:outputScript library="js" name="/clock.js"/>
 </h:head>
 
 <h:body>
-    <table id="body-table">
 
-        <tr>
-            <th class="header">
-                <div>
-                    <p>Шаповалова Дарья Сергеевна P3230</p>
-                    <p>Вариант 30017</p>
-                </div>
-            </th>
-        </tr>
+    <table border="1" width="100%" cellpadding="1" cellspacing="1" bgcolor="#FFFAF0">
 
-        <tr class="body">
-            <th class="choose-area">
-                <div class="graph">
-                    <ui:include src="resources/templates/graph.html"/>
-                </div>
+    <tr>
+        <td class="geometry" colspan="4" bgcolor="#f1dbb0" align="center"><font size="6pt"
+                                                               face="Times New Roman, Helvetica, serif"
+                                                               color="#6a310a">Лабораторная работа№3
+            по Web-программированию</font></td>
+    </tr>
 
-                <h:form id="hidden-form" style="display: none">
-                    <h:inputText id="pointX" value="#{point.xCoordinate}"/>
-                    <h:inputText id="pointY" value="#{point.yCoordinate}"/>
-                    <h:inputText id="pointR" value="#{point.rValue}"/>
-                    <h:commandButton id="hidden-btn" action="#{point.checkPoint}"/>
-                </h:form>
+    <tr>
+        <td colspan="4" class="header">Выполнила: Шаповалова Дарья, Группа: P3230, Вариант 30017.</td>
+    </tr>
 
-                <div>
-                    <h:form id="coordinates-form">
-                        <div class="checkbox-area">
-                            <p>Выберите X:</p>
-                            <div>
+            <h:form id="coordinates-form">
+                <tr>
+                    <td align="center">
+                        <p><b>Введите X:</b></p>
                                 <pf:selectOneMenu id="x" value="#{point.xCoordinate}" required="true">
                                     <f:selectItem itemLabel="-2" itemValue="-2.0"/>
                                     <f:selectItem itemLabel="-1.5" itemValue="-1.5"/>
@@ -58,13 +65,16 @@
                                     <f:selectItem itemLabel="1.5" itemValue="1.5"/>
                                     <f:selectItem itemLabel="2" itemValue="2.0"/>
                                 </pf:selectOneMenu>
-                            </div>
+                    </td>
 
+            <td align="center">
                             <p>Выберите Y (-5;5):</p>
                             <div>
                                 <pf:inputText placeholder="(-5;5)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
                             </div>
+            </td>
 
+            <td align="center">
                             <p>Выберите R:</p>
                             <div>
                                 <h:outputText id="output"/>
@@ -72,21 +82,26 @@
                                 <pf:slider for="rVal" step="0.25" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="R= {value}"/>
                             </div>
 
-                            <div class="buttons-area">
-                                <h:commandButton id="function-btn" class="gradient-button" value="Отправить" onclick="validate()" action="#{point.checkPoint}"/>
-                            </div>
-                        </div>
-                    </h:form>
+
+            </td>
+
+
+            <td align="center" rowspan="2"><p><b>А теперь определим попадание точки, <br/>заданной координатами ранее, в нашу область:</b></p>
+                <div class="graph">
+                    <ui:include src="resources/templates/graph.html"/>
                 </div>
 
-            </th>
+            </td>
         </tr>
 
+
         <tr>
-            <th>
-                <div>
-                    <h:button value="На главную" outcome="index" styleClass="gradient-button"/>
-                </div>
+        <td colspan="3" align="center" class="math">
+
+            <div>
+                <h:commandButton id="function-btn" class="btn" value="Отправить" onclick="validate()" action="#{point.checkPoint}"/>
+            </div>
+
                 <div class="table-area">
                     <h:dataTable id="main-table" value="#{point.points}" var="dot">
                         <f:facet name="header" id="caption">История выполнений</f:facet>
@@ -112,10 +127,28 @@
                         </h:column>
                     </h:dataTable>
                 </div>
-            </th>
+        </td>
+        </tr>
+            </h:form>
+
+        <tr>
+            <td colspan="4" align="center">
+                   <h:button value="Главная" outcome="index" styleClass="btn"/>
+           </td>
         </tr>
 
-    </table>
-</h:body>
 
+        <tfoot>
+        <tr>
+
+            <td class="geometry" colspan="4" height="70px" align="center" bgcolor="#f1dbb0">
+                <a href="https://github.com/Dasxunya"><img src = "resources/img/round.jpg" title="github" alt="github" width="30"
+                                                           height="30"/></a>
+            </td>
+
+        </tr>
+        </tfoot>
+    </table>
+
+</h:body>
 </html>
