@@ -54,32 +54,24 @@
                 <tr>
                     <td align="center">
                         <p><b>Введите X:</b></p>
-                                <pf:selectOneMenu id="x" value="#{point.xCoordinate}" required="true">
-                                    <f:selectItem itemLabel="-2" itemValue="-2.0"/>
-                                    <f:selectItem itemLabel="-1.5" itemValue="-1.5"/>
-                                    <f:selectItem itemLabel="-1" itemValue="-1.0"/>
-                                    <f:selectItem itemLabel="-0.5" itemValue="-0.5"/>
-                                    <f:selectItem itemLabel="0" itemValue="0"/>
-                                    <f:selectItem itemLabel="0.5" itemValue="0.5"/>
-                                    <f:selectItem itemLabel="1" itemValue="1.0"/>
-                                    <f:selectItem itemLabel="1.5" itemValue="1.5"/>
-                                    <f:selectItem itemLabel="2" itemValue="2.0"/>
-                                </pf:selectOneMenu>
+                          <div>
+                              <pf:slider for="rVal" step="0.5" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="X= {value}"/>
+                          </div>
                     </td>
 
             <td align="center">
-                            <p>Выберите Y (-5;5):</p>
+                <p><b>Введите Y (-5;3):</b></p>
                             <div>
-                                <pf:inputText placeholder="(-5;5)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
+                                <pf:inputText placeholder="(-5;3)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
                             </div>
             </td>
 
             <td align="center">
-                            <p>Выберите R:</p>
+                <p><b>Введите R:</b></p>
                             <div>
                                 <h:outputText id="output"/>
                                 <h:inputHidden id="rVal" value="#{point.rValue}"/>
-                                <pf:slider for="rVal" step="0.25" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="R= {value}"/>
+                                <pf:slider for="rVal" step="0.5" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="R= {value}"/>
                             </div>
 
 
@@ -101,32 +93,6 @@
             <div>
                 <h:commandButton id="function-btn" class="btn" value="Отправить" onclick="validate()" action="#{point.checkPoint}"/>
             </div>
-
-                <div class="table-area">
-                    <h:dataTable id="main-table" value="#{point.points}" var="dot">
-                        <f:facet name="header" id="caption">История выполнений</f:facet>
-                        <h:column class="column">
-                            <f:facet name="header">X</f:facet>
-                            #{dot.x}
-                        </h:column>
-                        <h:column class="column">
-                            <f:facet name="header">Y</f:facet>
-                            #{dot.y}
-                        </h:column>
-                        <h:column class="column">
-                            <f:facet name="header">R</f:facet>
-                            #{dot.r}
-                        </h:column>
-                        <h:column class="column">
-                            <f:facet name="header">Текущее время</f:facet>
-                            #{dot.time}
-                        </h:column>
-                        <h:column class="column">
-                            <f:facet name="header">Результат</f:facet>
-                            #{dot.result}
-                        </h:column>
-                    </h:dataTable>
-                </div>
         </td>
         </tr>
             </h:form>
@@ -149,6 +115,31 @@
         </tr>
         </tfoot>
     </table>
+
+<br/>
+            <h:dataTable class="finish-table" id="main-table" value="#{point.points}" var="dot">
+                <f:facet name="header" id="caption">История выполнений</f:facet>
+                <h:column class="column">
+                    <f:facet name="header">X</f:facet>
+                    #{dot.x}
+                </h:column>
+                <h:column class="column">
+                    <f:facet name="header">Y</f:facet>
+                    #{dot.y}
+                </h:column>
+                <h:column class="column">
+                    <f:facet name="header">R</f:facet>
+                    #{dot.r}
+                </h:column>
+                <h:column class="column">
+                    <f:facet name="header">Текущее время</f:facet>
+                    #{dot.time}
+                </h:column>
+                <h:column class="column">
+                    <f:facet name="header">Результат</f:facet>
+                    #{dot.result}
+                </h:column>
+            </h:dataTable>
 
 </h:body>
 </html>

@@ -58,23 +58,6 @@ select {
     width: 150px;
 }
 
-.clock-area {
-    margin: auto;
-    max-width: 500px;
-    min-width: 100px;
-    background: burlywood;
-    text-align: center;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 32px;
-    padding: 10px;
-    font-weight: bold;
-    border-top: 10px goldenrod;
-    margin-top: 100px;
-    text-decoration-color: #3f1f0b;
-    display:inline;
-    vertical-align:middle;
-}
-
 #date {
     display: block;
     font-weight: normal;
@@ -90,5 +73,21 @@ select {
     width: 100%;
     cellpadding: 0;
     cellspacing: 0;
+}
+table#main-table {
+    color: #3f1f0b;
+    background-color: #e3d8c5;
+    border: 2px outset #c76d30;
+    width: 80%;
+    margin: auto;
+    align-content: center;
+}
+.finish-table{
+    text-align: center;
+}
+table#main-table td, th, div {
+    align-content: center;
+    border: black;
+    border-bottom: #3f1f0b;
 }
 
