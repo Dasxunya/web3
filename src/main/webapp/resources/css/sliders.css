@@ -18,7 +18,9 @@
 .ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus{
     background-color: #c2af8d;
     color: #443626;
-
+}
+.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus.ui-state-focus{
+    pointer-events: none;
 }
 .ui-state-active, .ui-state-hover, .ui-state-focus :active, :hover, :focus{
     outline: 0;
