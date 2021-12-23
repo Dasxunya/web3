@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:pf="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
 >
 
 <h:head>
@@ -33,74 +33,85 @@
 
     <h:outputStylesheet library="css" name="/body.css"/>
     <h:outputStylesheet library="css" name="/header.css"/>
+    <h:outputScript library="js" name="/validate.js"/>
+    <h:outputScript library="js" name="/graph.js"/>
 </h:head>
 
 <h:body>
 
+    <h:form id="hidden-form" style="display: none">
+        <h:inputText id="pointX" value="#{point.xCoordinate}"/>
+        <h:inputText id="pointY" value="#{point.yCoordinate}"/>
+        <h:inputText id="pointR" value="#{point.rValue}"/>
+        <h:commandButton id="btn" action="#{point.checkPoint}"/>
+    </h:form>
+
     <table border="1" width="100%" cellpadding="1" cellspacing="1" bgcolor="#FFFAF0">
 
-    <tr>
-        <td class="geometry" colspan="4" bgcolor="#f1dbb0" align="center"><font size="6pt"
-                                                               face="Times New Roman, Helvetica, serif"
-                                                               color="#6a310a">Лабораторная работа№3
-            по Web-программированию</font></td>
-    </tr>
-
-    <tr>
-        <td colspan="4" class="header">Выполнила: Шаповалова Дарья, Группа: P3230, Вариант 30017.</td>
-    </tr>
-
-            <h:form id="coordinates-form">
-                <tr>
-                    <td align="center">
-                        <p><b>Введите X:</b></p>
-                          <div>
-                              <pf:slider for="rVal" step="0.5" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="X= {value}"/>
-                          </div>
-                    </td>
-
-            <td align="center">
-                <p><b>Введите Y (-5;3):</b></p>
-                            <div>
-                                <pf:inputText placeholder="(-5;3)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
-                            </div>
-            </td>
-
-            <td align="center">
-                <p><b>Введите R:</b></p>
-                            <div>
-                                <h:outputText id="output"/>
-                                <h:inputHidden id="rVal" value="#{point.rValue}"/>
-                                <pf:slider for="rVal" step="0.5" minValue="1" maxValue="4" display="output" style="width: 200px" displayTemplate="R= {value}"/>
-                            </div>
-
-
-            </td>
-
-
-            <td align="center" rowspan="2"><p><b>А теперь определим попадание точки, <br/>заданной координатами ранее, в нашу область:</b></p>
-                <div class="graph">
-                    <ui:include src="resources/templates/graph.html"/>
-                </div>
-
-            </td>
+        <tr>
+            <td class="geometry" colspan="4" bgcolor="#f1dbb0" align="center"><font size="6pt"
+                                                                                    face="Times New Roman, Helvetica, serif"
+                                                                                    color="#6a310a">Лабораторная работа№3
+                по Web-программированию</font></td>
         </tr>
-
 
         <tr>
-        <td colspan="3" align="center" class="math">
-
-            <div>
-                <h:commandButton id="function-btn" class="btn" value="Отправить" onclick="validate()" action="#{point.checkPoint}"/>
-            </div>
-        </td>
+            <td colspan="4" class="header">Выполнила: Шаповалова Дарья, Группа: P3230, Вариант 30017.</td>
         </tr>
-            </h:form>
+
+        <h:form id="coordinates-form">
+            <tr>
+                <td align="center">
+                    <p><b>Введите X:</b></p>
+                    <div style="color: #3f1f0b">
+                        <h:outputText id="xOutput"/>
+                        <h:inputHidden id="x" value="#{point.xCoordinate}"/>
+                        <p:slider for="x" step="0.5" minValue="-2" maxValue="2" display="xOutput" style="width: 200px" displayTemplate="X= {value}"/>
+                    </div>
+                </td>
+
+                <td align="center">
+                    <p><b>Введите Y (-5;3):</b></p>
+                    <div>
+                        <p:inputText placeholder="(-5;3)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
+                    </div>
+                </td>
+
+                <td align="center">
+                    <p><b>Введите R:</b></p>
+                    <div style="color: #3f1f0b">
+                        <h:outputText id="rOutput"/>
+                        <h:inputHidden id="rVal" value="#{point.rValue}"/>
+                        <p:slider for="rVal" step="0.5" minValue="1" maxValue="4" display="rOutput" style="width: 200px" displayTemplate="R= {value}"/>
+                    </div>
+
+
+                </td>
+
+
+                <td align="center" rowspan="2"><p><b>А теперь определим попадание точки, <br/>заданной координатами ранее, в нашу область:</b></p>
+                    <div id="graphic_pic">
+                        <ui:include src="resources/templates/graph.html"/>
+                    </div>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="3" align="center" class="math">
+
+                    <div>
+                        <h:commandButton id="function-btn" class="btn" value="Отправить" onclick="validate()" action="#{point.checkPoint}"/>
+                    </div>
+                </td>
+            </tr>
+        </h:form>
 
         <tr>
             <td colspan="4" align="center">
-                   <h:button value="Главная" outcome="index" styleClass="btn"/>
-           </td>
+                <h:button value="Главная" outcome="index" styleClass="btn"/>
+            </td>
         </tr>
 
 
@@ -116,30 +127,30 @@
         </tfoot>
     </table>
 
-<br/>
-            <h:dataTable class="finish-table" id="main-table" value="#{point.points}" var="dot">
-                <f:facet name="header" id="caption">История выполнений</f:facet>
-                <h:column class="column">
-                    <f:facet name="header">X</f:facet>
-                    #{dot.x}
-                </h:column>
-                <h:column class="column">
-                    <f:facet name="header">Y</f:facet>
-                    #{dot.y}
-                </h:column>
-                <h:column class="column">
-                    <f:facet name="header">R</f:facet>
-                    #{dot.r}
-                </h:column>
-                <h:column class="column">
-                    <f:facet name="header">Текущее время</f:facet>
-                    #{dot.time}
-                </h:column>
-                <h:column class="column">
-                    <f:facet name="header">Результат</f:facet>
-                    #{dot.result}
-                </h:column>
-            </h:dataTable>
+    <br/>
+    <h:dataTable class="finish-table" id="main-table" value="#{point.points}" var="dot">
+        <f:facet name="header" id="caption">История выполнений</f:facet>
+        <h:column class="column">
+            <f:facet name="header">X</f:facet>
+            #{dot.x}
+        </h:column>
+        <h:column class="column">
+            <f:facet name="header">Y</f:facet>
+            #{dot.y}
+        </h:column>
+        <h:column class="column">
+            <f:facet name="header">R</f:facet>
+            #{dot.r}
+        </h:column>
+        <h:column class="column">
+            <f:facet name="header">Текущее время</f:facet>
+            #{dot.time}
+        </h:column>
+        <h:column class="column">
+            <f:facet name="header">Результат</f:facet>
+            #{dot.result}
+        </h:column>
+    </h:dataTable>
 
 </h:body>
 </html>

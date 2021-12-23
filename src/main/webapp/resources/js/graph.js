@@ -1,4 +1,4 @@
-let x, yCoord;
+let xCoord, yCoord;
 let r;
 let svg;
 
@@ -26,7 +26,7 @@ function processCoordinates(event) {
     const rowX = event.pageX - domRect.x;
     const rowY = event.pageY - domRect.y;
     r = document.getElementById("coordinates-form:rVal").value.trim();
-    x = ((r * (svgSize / 2 - rowX) * -1) / 100).toFixed(2);
+    xCoord = ((r * (svgSize / 2 - rowX) * -1) / 100).toFixed(2);
     yCoord = ((r * (svgSize / 2 - rowY)) / 100).toFixed(2);
     sendRequest(x, yCoord, r);
 }
@@ -36,7 +36,7 @@ function sendRequest(xC, yC, rC) {
     document.getElementById('hidden-form:pointX').value = xC;
     document.getElementById('hidden-form:pointY').value = yC;
     document.getElementById('hidden-form:pointR').value = rC;
-    document.getElementById('hidden-form:hidden-btn').click();
+    document.getElementById('hidden-form:btn').click();
 }
 
 function drawDots() {
@@ -87,4 +87,5 @@ $("input[name=\"coordinates-form:rVal\"]").on('input', function (){
     loadDotsFromTable();
     drawDots();
 })
+
 

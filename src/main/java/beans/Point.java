@@ -83,15 +83,15 @@ public class Point {
     }
 
     private boolean isInTriangle() {
-        return xCoordinate >= 0 && yCoordinate <= 0 && yCoordinate >= xCoordinate - rValue / 2;
+        return xCoordinate >= 0 && yCoordinate <= 0 && yCoordinate >= - xCoordinate - rValue / 2;
     }
 
     private boolean isInRectangle() {
-        return xCoordinate <= 0 && yCoordinate >= 0 && yCoordinate <= rValue && xCoordinate >= -rValue;
+        return xCoordinate >= 0 && yCoordinate >= 0 && yCoordinate <= rValue / 2 && xCoordinate <= rValue;
     }
 
     private boolean isInCircle() {
-        return xCoordinate <= 0 && yCoordinate <= 0 && xCoordinate * xCoordinate + yCoordinate * yCoordinate <= rValue * rValue;
+        return xCoordinate <= 0 && yCoordinate >= 0 && xCoordinate * xCoordinate + yCoordinate * yCoordinate <= rValue * rValue;
     }
 
 }

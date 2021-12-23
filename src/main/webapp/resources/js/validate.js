@@ -1,18 +1,18 @@
 let y;
-let r;
 
-document.getElementById("function-btn").addEventListener("click", validate);
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
 
 function validate() {
-    if (!validateY());
-    if (!validateR());
+    if (!validateY()||!validateXR());
 }
 
 function validateY() {
-    let yText = document.getElementById("yField");
+    let yText = document.getElementById("coordinates-form:y");
     y = yText.value.trim();
     if (/^-?\d+\.?\d*$/.test(y)) {
-        if (y >= 5 || y <= -5) {
+        if (y >= 3 || y <= -5) {
             yText.setCustomValidity("Число вне допустимого диапазона");
             return false;
         } else {
@@ -24,19 +24,18 @@ function validateY() {
         return false;
     }
 }
-function validateR() {
-    let rText = document.getElementById("rField");
-    r = rText.value.trim();
-    if (/^-?\d+\.?\d*$/.test(r)) {
-        if (r >=4 || r <= 1) {
-            rText.setCustomValidity("Число вне допустимого диапазона");
-            return false;
-        } else {
-            rText.setCustomValidity("")
-            return true;
-        }
-    } else {
-        rText.setCustomValidity("Некорректный вид числа");
-        return false;
+
+function validateXR() {
+    let xText = document.getElementById("coordinates-form:x");
+    let rText = document.getElementById("coordinates-form:rVal");
+    const x = xText.value.trim();
+    const xValues = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2];
+    const r = rText.value.trim();
+    const rValues = [1, 1.5, 2, 2.5, 3, 3.5, 4];
+    if (rValues.indexOf(r)==-1) {
+        rText.setCustomValidity("Число вне допустимого диапазона");
+    }
+    else if (xValues.indexOf(x)==-1) {
+        rText.setCustomValidity("Число вне допустимого диапазона");
     }
 }
