@@ -1,0 +1,26 @@
+.ui-slider{
+    background: #f1dbb0;
+    border-color: rgba(0, 0, 0, 0);
+}
+.ui-slider-handle.ui-corner-all.ui-state-default{
+    background-color: #8a7d51;
+    border: #93673d;
+}
+.ui-slider-handle.ui-corner-all.ui-state-default.ui-state-focus {
+    box-shadow: 0px 0px 0px #000000;
+    background-color: #443626;
+}
+
+.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all{
+    background-color: #f1dbb0;
+    color: #443626;
+}
+.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus{
+    background-color: #c2af8d;
+    color: #443626;
+
+}
+.ui-state-active, .ui-state-hover, .ui-state-focus :active, :hover, :focus{
+    outline: 0;
+    outline-offset: 0;
+}

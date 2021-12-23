@@ -33,6 +33,7 @@
 
     <h:outputStylesheet library="css" name="/body.css"/>
     <h:outputStylesheet library="css" name="/header.css"/>
+    <h:outputStylesheet library="css" name="/sliders.css"/>
     <h:outputScript library="js" name="/validate.js"/>
     <h:outputScript library="js" name="/graph.js"/>
 </h:head>
@@ -73,7 +74,7 @@
                 <td align="center">
                     <p><b>Введите Y (-5;3):</b></p>
                     <div>
-                        <p:inputText placeholder="(-5;3)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
+                        <p:inputText autocomplete="false" placeholder="(-5;3)" id="y" value="#{point.yCoordinate}" required="true" maxlength="11" type="text" label="Y"/>
                     </div>
                 </td>
 
