@@ -1,8 +1,8 @@
-let xCoord, yCoord;
+let x, yCoord;
 let r;
 let svg;
 
-//For points from table
+//for table
 let Xs = [];
 let Ys = [];
 let results = [];
@@ -26,7 +26,7 @@ function processCoordinates(event) {
     const rowX = event.pageX - domRect.x;
     const rowY = event.pageY - domRect.y;
     r = document.getElementById("coordinates-form:rVal").value.trim();
-    xCoord = ((r * (svgSize / 2 - rowX) * -1) / 100).toFixed(2);
+    x = ((r * (svgSize / 2 - rowX) * -1) / 100).toFixed(2);
     yCoord = ((r * (svgSize / 2 - rowY)) / 100).toFixed(2);
     sendRequest(x, yCoord, r);
 }
@@ -87,5 +87,3 @@ $("input[name=\"coordinates-form:rVal\"]").on('input', function (){
     loadDotsFromTable();
     drawDots();
 })
-
-

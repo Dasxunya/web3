@@ -83,7 +83,7 @@ public class Point {
     }
 
     private boolean isInTriangle() {
-        return xCoordinate >= 0 && yCoordinate <= 0 && yCoordinate >= - xCoordinate - rValue / 2;
+        return xCoordinate <= 0 && yCoordinate <= 0 && yCoordinate >= - xCoordinate - rValue / 2;
     }
 
     private boolean isInRectangle() {
